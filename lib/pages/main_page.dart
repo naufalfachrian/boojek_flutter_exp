@@ -28,6 +28,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return _MainPage(
       updatePageSwitch: _updatePageSwitch,
+      pageSwitch: _pageSwitch,
       body: switch(_pageSwitch) {
         MainPageSwitch.Home => const HomePage(),
         MainPageSwitch.Promo => const PromoPage(),
@@ -43,9 +44,16 @@ class _MainPage extends StatelessWidget {
 
   final ValueChanged<MainPageSwitch> updatePageSwitch;
 
+  final MainPageSwitch pageSwitch;
+
   final Widget? body;
 
-  const _MainPage({super.key, required this.updatePageSwitch, required this.body});
+  const _MainPage({
+    super.key,
+    required this.updatePageSwitch,
+    required this.pageSwitch,
+    required this.body
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +63,10 @@ class _MainPage extends StatelessWidget {
         backgroundColor: Colors.green,
         elevation: 1,
         toolbarHeight: 80,
-        title: TopNav(updatePageSwitch: updatePageSwitch),
+        title: TopNav(
+          updatePageSwitch: updatePageSwitch,
+          pageSwitch: pageSwitch,
+        ),
       ),
       body: body,
     );

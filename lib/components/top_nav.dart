@@ -6,7 +6,13 @@ class TopNav extends StatelessWidget {
 
   final ValueChanged<MainPageSwitch> updatePageSwitch;
 
-  const TopNav({super.key, required this.updatePageSwitch});
+  final MainPageSwitch pageSwitch;
+
+  const TopNav({
+    super.key,
+    required this.updatePageSwitch,
+    required this.pageSwitch
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +22,10 @@ class TopNav extends StatelessWidget {
         color: Colors.lightGreen,
         borderRadius: BorderRadius.circular(36)
       ),
-      child: TopNavContent(updatePageSwitch: updatePageSwitch),
+      child: TopNavContent(
+        updatePageSwitch: updatePageSwitch,
+        pageSwitch: pageSwitch,
+      ),
     );
   }
 
